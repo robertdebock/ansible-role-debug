@@ -1,0 +1,5 @@
+---
+# tasks file for debug
+- name: show vars
+  debug:
+    var: vars
