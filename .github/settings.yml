@@ -1,4 +1,7 @@
 ---
+#
+# Ansible managed
+#
 repository:
   description: Show variable per host.
   homepage: https://robertdebock.nl/
