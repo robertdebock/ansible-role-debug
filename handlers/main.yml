@@ -1,8 +1,2 @@
 ---
 # handlers file for debug
-- name: restart debug
-  service:
-    name: "{{ debug_service }}"
-    state: restarted
-  when:
-    - ansible_virtualization_type != "docker"
