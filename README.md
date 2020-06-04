@@ -2,9 +2,9 @@
 
 Show variable per host.
 
-|Travis|GitHub|Quality|Downloads|
-|------|------|-------|---------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-debug.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-debug)|[![github](https://github.com/robertdebock/ansible-role-debug/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-debug/actions)|[![quality](https://img.shields.io/ansible/quality/43591)](https://galaxy.ansible.com/robertdebock/debug)|[![downloads](https://img.shields.io/ansible/role/d/43591)](https://galaxy.ansible.com/robertdebock/debug)|
+|Travis|GitHub|Quality|Downloads|Version|
+|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-debug.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-debug)|[![github](https://github.com/robertdebock/ansible-role-debug/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-debug/actions)|[![quality](https://img.shields.io/ansible/quality/43591)](https://galaxy.ansible.com/robertdebock/debug)|[![downloads](https://img.shields.io/ansible/role/d/43591)](https://galaxy.ansible.com/robertdebock/debug)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-debug.svg)](https://github.com/robertdebock/ansible-role-debug/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
