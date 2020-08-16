@@ -1,5 +1,12 @@
 ---
 # tasks file for debug
+
+- name: collect package facts
+  package_facts:
+
+- name: collect service_facts
+  service_facts:
+
 - name: show vars
   debug:
     var: vars
