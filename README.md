@@ -77,10 +77,10 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |alpine|all|
 |amazon|2018.03|
 |el|7, 8|
-|debian|buster, bullseye|
-|fedora|31, 32|
+|debian|buster|
+|fedora|31|
 |opensuse|all|
-|ubuntu|focal, bionic, xenial|
+|ubuntu|bionic, xenial|
 
 The minimum version of Ansible required is 2.8 but tests have been done to:
 
