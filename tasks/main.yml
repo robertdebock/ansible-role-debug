@@ -3,9 +3,13 @@
 
 - name: collect package facts
   package_facts:
+  when:
+    - ansible_os_family not in ["Alpine", "Suse"]
 
 - name: collect service_facts
   service_facts:
+  when:
+    - ansible_distribution_release not in ["bullseye", "focal"]
 
 - name: show vars
   debug:
