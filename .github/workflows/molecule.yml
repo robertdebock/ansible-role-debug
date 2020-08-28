@@ -44,6 +44,8 @@ jobs:
           - image: "centos"
             tag: "latest"
           - image: "debian"
+            tag: "bullseye"
+          - image: "debian"
             tag: "latest"
           - image: "fedora"
             tag: "31"
