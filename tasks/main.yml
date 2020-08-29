@@ -8,6 +8,9 @@
 
 - name: collect service_facts
   service_facts:
+  when:
+    - ansible_os_family != "Debian"
+    - ansible_distribution_version != "NA"
 
 - name: show vars
   debug:
