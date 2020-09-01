@@ -4,6 +4,9 @@
 #
 language: python
 
+os: linux
+dist: xenial
+
 python:
   - "3.8"
 
@@ -13,13 +16,12 @@ services:
 env:
   global:
     namespace="robertdebock"
-  matrix:
+  jobs:
     - image="alpine" tag="latest"
     - image="alpine" tag="edge"
     - image="amazonlinux" tag="1"
     - image="centos" tag="7"
     - image="centos" tag="latest"
-    - image="debian" tag="bullseye"
     - image="debian" tag="latest"
     - image="fedora" tag="31"
     - image="opensuse" tag="latest"
@@ -38,5 +40,8 @@ script:
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
-  slack: "SNkicG4pedhI01eMy6+MM5z6WB2WRcbyfS7xpjmEKY1XViTm3sro1EIHuqiZkDzQzX65WSbEPruFEWyXFLWhMx+nE/n3/1L3GZu0ujDdVcooHOd5Lyr5tmasuQDQvUpXIJucTnltcmQbTHXuZf5xtq+Qa1m8jjq32Uq9gGOI5BiTZqT6TlC7b/0wnpqSHDxy9IRdJtFbtAdT7UXnkPbcu05cHSx7S0O0lHrnaVcbB61txP1Xxg69s5a/GuMT9MY1BBUmSZDtzzY8oYe1qbgY7no4Cx0MWwsKucN4Q47gwwxU136tb54yQrOuT/eJNNPdN/beN6PmEFjwiKRCCoiMZJiL9RbOUIBx4f655glxbqzQYHSjFIbTJUHEVuhS3ydHFZNuQLlIn8f0fEmLtN4hoxqadvVUh13/s99egqU+igrMTCjXJQ+Y+mo3EVGAlIgfLgaSEAXfkH8yvqZb4VTlSA/o9aTGiSFfC+HSlor2E9A7VDJvHsW7yT5BNjX5o3EwfOuodqMN18nvLPHcHvDwDrozzbRtVefMLgqnoDuDeiURrOvO5TiI3Hn5hhHirRE1Y9pDjwLZ8czym2K5zJKOTdrkVMhAgcBlzFZcObOdAHeLDfADvE+ge5Jzq/JuMJn6nsK7O+oSiDzqvTVxhwqU5cOIv7G1FWFlsP1/zEkwM1g="
+  slack:
+    secure: "KjohqJEVz/jAiQL2lH8g9Rllv5EEaBLWaXOu5bcytH/N7i/egB5P4o+24yOchVAsweJuKCvY1uJpjiYYBuIyWhD/jUyJfTgpMkjFtnc0JX86l5CiyJk6TPUXHfZfRIFtSP0nxBtL38InQN8EgInxFUu4fE07G1B1GYmqDootupCSsBpLmPZDXbHwuzYKag0TGQy7E/loI+fQOnbuiQirGvjjTVDwQfiJHhaQJmKS8YAymQ1Oc5kxLhF/MMNzxig7JXx4e86Nlcpadd2ngqY1HvNoPM5YmSDxV4MPWQja7yvnFoFsDiwzLqilTeaUJZtHILQK4ID+UQIi10iWO2GgU5t4Aq1J0U1Re4jWxx5IATYS0Hdo22SNeRencxeXmS/XvjSLV2C7QG3wdNXJ7bMN40mNfQT9qFK3INwDsFqzV1Iztay2ySUKu7tk1rVlK1iiuNq8s9nUxqkaiFBcy1jxLSLGiAoY/MV43FuKZrvX4t8JTnHLP+MMGQGUlHkuQXFqaMMZjlmmTWK1AnxyYvvG342MgcvHCovao2I0J6KM9ARtBYTD9NoOd7nrZyugNt7RY7jMW7dzUii0ztK/LZQ+3SMXzNIIvRAS1MmDvdEme2SC8Bo21YQ97WNucpw6eN/8wWPX6lxxVcdZckNWC7oYwjKLfoRAy0FCbSF0ZgE+9aY="
+    on_success: change
+    template: "%{result}: %{repository_slug}@%{branch}, build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>)"
   email: false
