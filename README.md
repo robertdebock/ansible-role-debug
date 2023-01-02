@@ -63,12 +63,12 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |container|tags|
 |---------|----|
 |alpine|all|
-|amazon|Candidate|
-|el|8|
-|debian|bullseye|
+|amazon|all|
+|el|all|
+|debian|all|
 |fedora|all|
 |opensuse|all|
-|ubuntu|bionic|
+|ubuntu|all|
 
 The minimum version of Ansible required is 2.10, tests have been done to:
 
