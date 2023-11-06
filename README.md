@@ -2,9 +2,9 @@
 
 Show variable per host.
 
-|GitHub|GitLab|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-debug/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-debug/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-debug/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-debug)|[![quality](https://img.shields.io/ansible/quality/43591)](https://galaxy.ansible.com/robertdebock/debug)|[![downloads](https://img.shields.io/ansible/role/d/43591)](https://galaxy.ansible.com/robertdebock/debug)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-debug.svg)](https://github.com/robertdebock/ansible-role-debug/releases/)|
+|GitHub|GitLab|Downloads|Version|
+|------|------|---------|-------|
+|[![github](https://github.com/robertdebock/ansible-role-debug/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-debug/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-debug/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-debug)|[![downloads](https://img.shields.io/ansible/role/d/24472)](https://galaxy.ansible.com/robertdebock/debug)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-debug.svg)](https://github.com/robertdebock/ansible-role-debug/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -76,7 +76,7 @@ The minimum version of Ansible required is 2.12, tests have been done to:
 - The current version.
 - The development version.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-debug/issues)
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-debug/issues).
 
 ## [License](#license)
 
