@@ -2,8 +2,8 @@
 variables:
   PY_COLORS: 1
 
-molecule-2.7:
-  image: python:2.7
+molecule:
+  image: $python
   script:
     - if [ -f tox.ini ] ; then tox ; fi
     - if [ ! -f tox.ini ] ; then molecule test ; fi
@@ -13,26 +13,37 @@ molecule-2.7:
     matrix:
       - image: "alpine"
         tag: "latest"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "amazonlinux"
         tag: "latest"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "enterpriselinux"
         tag: "latest"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "debian"
         tag: "latest"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "debian"
         tag: "bullseye"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "fedora"
         tag: "39"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "fedora"
         tag: "latest"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "fedora"
         tag: "rawhide"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "ubuntu"
         tag: "latest"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "ubuntu"
         tag: "jammy"
+        python: ["2.7", "3.8", "3.9", "3.10"]
       - image: "ubuntu"
         tag: "focal"
+        python: ["2.7", "3.8", "3.9", "3.10"]
 
 galaxy:
   script:
