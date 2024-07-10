@@ -1,10 +1,9 @@
 ---
-image: "robertdebock/github-action-molecule:6.0.1"
-
 variables:
   PY_COLORS: 1
 
-molecule:
+molecule-2.7:
+  image: python:2.7
   script:
     - if [ -f tox.ini ] ; then tox ; fi
     - if [ ! -f tox.ini ] ; then molecule test ; fi
