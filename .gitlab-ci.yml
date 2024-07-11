@@ -6,7 +6,7 @@ molecule:
   image: python:$python
   script:
     - apt-get update
-    - apt-get -y install docker
+    - apt-get -y install docker.io
     - apt-get -y install yamllint
     - pip install --no-cache-dir tox
     - if [ -f tox.ini ] ; then tox ; fi
