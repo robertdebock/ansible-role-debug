@@ -1,97 +1,68 @@
----
 variables:
   DEBIAN_FRONTEND: noninteractive
 
 molecule:
-  image: python:$python
+  image: $python
   script:
-    - apt-get update
-    - apt-get -y install docker.io
-    - apt-get -y install yamllint
+    - apt-get update -qq
+    - apt-get -y -qq install yamllint docker.io
     - pip install --no-cache-dir tox
     - if [ -f tox.ini ] ; then tox ; fi
     - if [ ! -f tox.ini ] ; then molecule test ; fi
   rules:
-    - if: $CI_COMMIT_REF_NAME == "master"
+    - if: $CI_COMMIT_REF_NAME == master
   parallel:
     matrix:
-      - image: "alpine"
-        tag: "latest"
+      - image: alpine
+        tag: latest
         python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "amazonlinux"
-        tag: "latest"
+          - "python:2.7"
+          - "python:3.8"
+          - "python:3.9"
+          - "python:3.10"
+      - image: amazonlinux
+        tag: latest
         python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "enterpriselinux"
-        tag: "latest"
+          - "python:2.7"
+          - "python:3.8"
+          - "python:3.9"
+          - "python:3.10"
+      - image: enterpriselinux
+        tag: latest
         python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "debian"
-        tag: "latest"
+          - "python:2.7"
+          - "python:3.8"
+          - "python:3.9"
+          - "python:3.10"
+      - image: debian
+        tag:
+          - latest
+          - bullseye
         python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "debian"
-        tag: "bullseye"
+          - "python:2.7"
+          - "python:3.8"
+          - "python:3.9"
+          - "python:3.10"
+      - image: fedora
+        tag:
+          - "39"
+          - "latest"
+          - "rawhide"
         python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "fedora"
-        tag: "39"
+          - "python:2.7"
+          - "python:3.8"
+          - "python:3.9"
+          - "python:3.10"
+      - image: ubuntu
+        tag:
+          - "latest"
+          - "jammy"
+          - "focal"
         python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "fedora"
-        tag: "latest"
-        python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "fedora"
-        tag: "rawhide"
-        python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "ubuntu"
-        tag: "latest"
-        python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "ubuntu"
-        tag: "jammy"
-        python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
-      - image: "ubuntu"
-        tag: "focal"
-        python:
-          - "2.7"
-          - "3.8"
-          - "3.9"
-          - "3.10"
+          - "python:2.7"
+          - "python:3.8"
+          - "python:3.9"
+          - "python:3.10"
 
 galaxy:
   script:
