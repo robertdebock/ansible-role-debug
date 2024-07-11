@@ -1,12 +1,12 @@
 ---
 variables:
   PY_COLORS: 1
-
+  DEBIAN_FRONTEND: noninteractive
 molecule:
   image: python:$python
   script:
     - apt-get update
-    - DEBIAN_FRONTEND=noninteractive ; apt-get install docker
+    - apt-get install docker
     - pip install --no-cache-dir tox
     - if [ -f tox.ini ] ; then tox ; fi
     - if [ ! -f tox.ini ] ; then molecule test ; fi
