@@ -5,6 +5,8 @@ variables:
 molecule:
   image: python:$python
   script:
+    - pip install --no-cache-dir tox
+    - pip install --no-cache-dir -r requirements.txt
     - if [ -f tox.ini ] ; then tox ; fi
     - if [ ! -f tox.ini ] ; then molecule test ; fi
   rules:
