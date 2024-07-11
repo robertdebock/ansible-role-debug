@@ -16,21 +16,18 @@ molecule:
       - image: alpine
         tag: latest
         python:
-          - "python:2.7"
           - "python:3.8"
           - "python:3.9"
           - "python:3.10"
       - image: amazonlinux
         tag: latest
         python:
-          - "python:2.7"
           - "python:3.8"
           - "python:3.9"
           - "python:3.10"
       - image: enterpriselinux
         tag: latest
         python:
-          - "python:2.7"
           - "python:3.8"
           - "python:3.9"
           - "python:3.10"
@@ -39,7 +36,6 @@ molecule:
           - latest
           - bullseye
         python:
-          - "python:2.7"
           - "python:3.8"
           - "python:3.9"
           - "python:3.10"
@@ -49,7 +45,6 @@ molecule:
           - "latest"
           - "rawhide"
         python:
-          - "python:2.7"
           - "python:3.8"
           - "python:3.9"
           - "python:3.10"
@@ -59,7 +54,6 @@ molecule:
           - "jammy"
           - "focal"
         python:
-          - "python:2.7"
           - "python:3.8"
           - "python:3.9"
           - "python:3.10"
