@@ -1,3 +1,5 @@
+---
+
 variables:
   DEBIAN_FRONTEND: noninteractive
 
@@ -10,53 +12,44 @@ molecule:
     - if [ -f tox.ini ] ; then tox ; fi
     - if [ ! -f tox.ini ] ; then molecule test ; fi
   rules:
-    - if: $CI_COMMIT_REF_NAME == master
+    - if: $CI_COMMIT_REF_NAME == "master"
   parallel:
     matrix:
-      - image: alpine
+      - image:
+          - alpine
+          - amazonlinux
+          - enterpriselinux
         tag: latest
         python:
-          - "python:3.8"
-          - "python:3.9"
-          - "python:3.10"
-      - image: amazonlinux
-        tag: latest
-        python:
-          - "python:3.8"
-          - "python:3.9"
-          - "python:3.10"
-      - image: enterpriselinux
-        tag: latest
-        python:
-          - "python:3.8"
-          - "python:3.9"
-          - "python:3.10"
+          - python:3.8
+          - python:3.9
+          - python:3.10
       - image: debian
         tag:
           - latest
           - bullseye
         python:
-          - "python:3.8"
-          - "python:3.9"
-          - "python:3.10"
+          - python:3.8
+          - python:3.9
+          - python:3.10
       - image: fedora
         tag:
-          - "39"
-          - "latest"
-          - "rawhide"
+          - 39
+          - latest
+          - rawhide
         python:
-          - "python:3.8"
-          - "python:3.9"
-          - "python:3.10"
+          - python:3.8
+          - python:3.9
+          - python:3.10
       - image: ubuntu
         tag:
-          - "latest"
-          - "jammy"
-          - "focal"
+          - latest
+          - jammy
+          - focal
         python:
-          - "python:3.8"
-          - "python:3.9"
-          - "python:3.10"
+          - python:3.8
+          - python:3.9
+          - python:3.10
 
 galaxy:
   script:
