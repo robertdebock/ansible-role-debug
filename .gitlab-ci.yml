@@ -3,7 +3,7 @@ variables:
   PY_COLORS: 1
 
 molecule:
-  image: $python
+  image: python:$python
   script:
     - if [ -f tox.ini ] ; then tox ; fi
     - if [ ! -f tox.ini ] ; then molecule test ; fi
