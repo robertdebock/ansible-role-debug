@@ -15,9 +15,13 @@ molecule:
     - if: $CI_COMMIT_REF_NAME == "master"
   parallel:
     matrix:
+      - image: amazonlinux
+        tag: latest
+        python:
+          - python:3.9
+          - python:3.10
       - image:
           - alpine
-          - amazonlinux
           - enterpriselinux
         tag: latest
         python:
