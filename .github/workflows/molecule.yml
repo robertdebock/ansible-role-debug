@@ -66,7 +66,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: molecule
-        run: tox
+        run: |
+          apt-get update -qq
+          apt-get -y -qq install yamllint docker.io
+          pip install --no-cache-dir tox
+          if [ -f tox.ini ] ; then tox ; fi
+          if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
         env:
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}
