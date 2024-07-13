@@ -67,9 +67,9 @@ jobs:
 
       - name: molecule
         run: |
-          apt-get update -qq
-          apt-get -y -qq install yamllint docker.io
-          pip install --no-cache-dir tox
+          sudo apt-get update -qq
+          sudo apt-get -y -qq install yamllint docker.io
+          sudo pip install --no-cache-dir tox
           if [ -f tox.ini ] ; then tox ; fi
           if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
         env:
