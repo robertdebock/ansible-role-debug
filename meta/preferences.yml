@@ -1,6 +1,6 @@
 ---
 
-matrix_overriders:
+matrix_overrides:
   alpine:
     python:
       - python:3.9
