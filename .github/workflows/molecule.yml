@@ -31,42 +31,53 @@ jobs:
         config:
           - image: "alpine"
             tag: "latest"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "amazonlinux"
             tag: "latest"
+            python_version: ['python:3.9', 'python:3.10']
           - image: "enterpriselinux"
             tag: "latest"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "debian"
             tag: "latest"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "debian"
             tag: "bullseye"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "fedora"
             tag: "39"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "fedora"
             tag: "latest"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "fedora"
             tag: "rawhide"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "ubuntu"
             tag: "latest"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "ubuntu"
             tag: "jammy"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "ubuntu"
             tag: "focal"
+            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
     steps:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.
-        uses: actions/setup-python@v5
-        with:
-          python-version: |
-            3.8
-            3.9
-            3.10
+      # - name: Set up Python 3.
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: |
+      #       3.8
+      #       3.9
+      #       3.10
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      # - name: Install dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install -r requirements.txt
 
       - name: molecule
         run: |
@@ -75,6 +86,8 @@ jobs:
           sudo pip install --no-cache-dir tox
           if [ -f tox.ini ] ; then tox ; fi
           if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
+        container:
+          image: ${{ matrix.config.python_version }}
         env:
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}
