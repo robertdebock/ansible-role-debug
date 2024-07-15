@@ -21,65 +21,135 @@ jobs:
         uses: actions/checkout@v4
       - name: ansible-lint
         uses: ansible-community/ansible-lint-action@main
-  test:
+  test-python-3-8:
     needs:
       - lint
     runs-on: ubuntu-20.04
     container:
-      image: ${{ matrix.config.python_version }}
+      image: python:3.8
     strategy:
       fail-fast: false
       matrix:
         config:
           - image: "alpine"
             tag: "latest"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "amazonlinux"
             tag: "latest"
-            python_version: ['python:3.9', 'python:3.10']
           - image: "enterpriselinux"
             tag: "latest"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "debian"
             tag: "latest"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "debian"
             tag: "bullseye"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "fedora"
             tag: "39"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "fedora"
             tag: "latest"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "fedora"
             tag: "rawhide"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "ubuntu"
             tag: "latest"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "ubuntu"
             tag: "jammy"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
           - image: "ubuntu"
             tag: "focal"
-            python_version: ['python:3.8', 'python:3.9', 'python:3.10']
     steps:
       - name: checkout
         uses: actions/checkout@v4
 
-      # - name: Set up Python 3.
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: |
-      #       3.8
-      #       3.9
-      #       3.10
+      - name: molecule
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get -y -qq install yamllint docker.io
+          sudo pip install --no-cache-dir tox
+          if [ -f tox.ini ] ; then tox ; fi
+          if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
+        env:
+          image: ${{ matrix.config.image }}
+          tag: ${{ matrix.config.tag }}
 
-      # - name: Install dependencies
-      #   run: |
-      #     python -m pip install --upgrade pip
-      #     pip install -r requirements.txt
+  test-python-3-9:
+    needs:
+      - lint
+    runs-on: ubuntu-20.04
+    container:
+      image: python:3.9
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - image: "alpine"
+            tag: "latest"
+          - image: "amazonlinux"
+            tag: "latest"
+          - image: "enterpriselinux"
+            tag: "latest"
+          - image: "debian"
+            tag: "latest"
+          - image: "debian"
+            tag: "bullseye"
+          - image: "fedora"
+            tag: "39"
+          - image: "fedora"
+            tag: "latest"
+          - image: "fedora"
+            tag: "rawhide"
+          - image: "ubuntu"
+            tag: "latest"
+          - image: "ubuntu"
+            tag: "jammy"
+          - image: "ubuntu"
+            tag: "focal"
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: molecule
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get -y -qq install yamllint docker.io
+          sudo pip install --no-cache-dir tox
+          if [ -f tox.ini ] ; then tox ; fi
+          if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
+        env:
+          image: ${{ matrix.config.image }}
+          tag: ${{ matrix.config.tag }}
+
+  test-python-3-10:
+    needs:
+      - lint
+    runs-on: ubuntu-20.04
+    container:
+      image: python:3.10
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - image: "alpine"
+            tag: "latest"
+          - image: "amazonlinux"
+            tag: "latest"
+          - image: "enterpriselinux"
+            tag: "latest"
+          - image: "debian"
+            tag: "latest"
+          - image: "debian"
+            tag: "bullseye"
+          - image: "fedora"
+            tag: "39"
+          - image: "fedora"
+            tag: "latest"
+          - image: "fedora"
+            tag: "rawhide"
+          - image: "ubuntu"
+            tag: "latest"
+          - image: "ubuntu"
+            tag: "jammy"
+          - image: "ubuntu"
+            tag: "focal"
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
 
       - name: molecule
         run: |
