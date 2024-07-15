@@ -25,6 +25,8 @@ jobs:
     needs:
       - lint
     runs-on: ubuntu-20.04
+    container:
+      image: ${{ matrix.config.python_version }}
     strategy:
       fail-fast: false
       matrix:
@@ -86,8 +88,6 @@ jobs:
           sudo pip install --no-cache-dir tox
           if [ -f tox.ini ] ; then tox ; fi
           if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
-        container:
-          image: ${{ matrix.config.python_version }}
         env:
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}
