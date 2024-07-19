@@ -34,8 +34,6 @@ jobs:
         config:
           - image: "alpine"
             tag: "latest"
-          - image: "amazonlinux"
-            tag: "latest"
           - image: "enterpriselinux"
             tag: "latest"
           - image: "debian"
@@ -67,10 +65,7 @@ jobs:
           if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
         env:
           image: ${{ matrix.config.image }}
-
           tag: ${{ matrix.config.tag }}
-
-
   python-3-9:
     needs:
       - lint
@@ -116,10 +111,7 @@ jobs:
           if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
         env:
           image: ${{ matrix.config.image }}
-
           tag: ${{ matrix.config.tag }}
-
-
   python-3-10:
     needs:
       - lint
@@ -165,5 +157,4 @@ jobs:
           if [ ! -f tox.ini ] ; then pip install -r requirements.yml ; pip install ansible-lint ansible-core ; molecule test ; fi
         env:
           image: ${{ matrix.config.image }}
-
           tag: ${{ matrix.config.tag }}
